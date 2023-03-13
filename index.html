@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="initClock()">
+    
+
+    <div class="hero-box">
+        <div class="container">
+
+            <div class="darktheme"></div>
+
+            <div class="hero-wrapper">
+                <div class="ramadan-text">
+                    <h1>رمضان كريم</h1>
+                    <span>جدول مواعير الافطار </span>
+                    <p>اللَّهمَّ بعلمِكَ الغيبَ وقدرتِكَ على الخلقِ أحيِني ما علمتَ الحياةَ خيرًا لي، وتوفَّني إذا علمتَ الوفاةَ خيرًا لي، وأسألُكَ خَشيتَكَ في الغيبِ والشَّهادةِ، وأسألُكَ كلمةَ الحقِّ في الرِّضا والغضَبِ، وأسألُكَ القصدَ في الفقرِ والغنى، وأسألُكَ نعيمًا لاَ ينفدُ، وأسألُكَ قرَّةَ عينٍ لاَ تنقطعُ، وأسألُكَ الرِّضاءَ بعدَ القضاءِ، وأسألُكَ بَردَ العيشِ بعدَ الموتِ، وأسألُكَ لذَّةَ النَّظرِ إلى وجْهكَ، والشَّوقَ إلى لقائِكَ، في غيرِ ضرَّاءَ مضرَّةٍ، ولاَ فتنةٍ مضلَّةٍ، اللَّهمَّ زيِّنَّا بزينةِ الإيمانِ، واجعلنا هداةً مُهتدينَ
+
+                      </p>
+                </div>
+
+              
+                    <div class="datetime">
+                        <div class="date">
+                          <span id="dayname">Day</span>,
+                          <span id="month">Month</span>
+                          <span id="daynum">00</span>,
+                          <span id="year">Year</span>
+                        </div>
+                        <div class="time">
+                          <span id="hour">00</span>:
+                          <span id="minutes">00</span>:
+                          <span id="seconds">00</span>
+                          <span id="period">AM</span>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+   
+            <div class="ramadan-dua">
+                <ul>
+                    <li>
+                        <h4>ramadan Dua for (Fasting)</h4>
+                        <p>This is the dua for opening fast (or dua for keeping fast), which is what we called Sahur (Sahoor). The dua in Arabic is as follows:</p>
+                        <b>وبصوم غد نویت من شهر رمضان</b>
+                        <p><b>Transliteration :</b>Wa bisawmi ghadinn nawaiytu min shahri Ramadan. [Source: Abu Dawud]</p>
+                        <p><b>translate :</b>I intent to keep fast today for the month of Ramadaan</p>
+                    </li>
+
+                    <li>
+                        <h4>Ramadan Dua for (Iftar Dua)</h4>
+                        <p>This is the dua for opening fast (or dua for keeping fast), which is what we called Sahur (Sahoor). The dua in Arabic is as follows:</p>
+                        <b>واللهم إني لك صمت وبك أمنت وعلى رزقك أفطرت</b>
+                        <p><b>Transliteration :</b>Allahumma inni laka sumtu wa bika aamantu [wa ‘alayka tawakkaltu] wa ‘ala rizq-ika aftarthu [Source: Abu Dawud]</p>
+                        <p><b>translate :</b>O Allah. I fasted for You and believe in You and I break my fast with Your sustenance</p>
+                    </li>
+
+                    <li>
+                        <h4>First 10 Days of Mercy</h4>
+                        <b>ربي اغفر وارحم وانت خير الراحمين</b>
+                        <p><b>translate :</b>My Lord! Forgive and have mercy, for You are</p>
+
+                        <hr>
+
+                        <h4>Second 10 Days of Forgiveness</h4>
+                        <b>استغفرالله ربي من كل ذنب و أتوب إليه</b>
+                        <p><b>translate :</b>I seek forgiveness from Allah, my Lord, from every sin, and i turn towards Him.</p>
+
+                        <hr>
+
+                        <h4>Last 10 Days of Seek Refuge with Allah from Hellfire</h4>
+                        <b>راللهم إنك عفوا تحب العفو فاعف عن</b>
+                        <p><b>translate :</b>O Allah! You are The One Who pardons greatly, and loves to pardon, so pardon me.</p>
+
+                    </li>
+                </ul>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+<script>
+
+
+    var button = document.querySelector(".darktheme");
+    
+    button.onclick = function(){
+        document.querySelector(".darktheme").classList.toggle("active");
+        document.body.classList.toggle("dark-theme-color");
+    }
+    function updateClock(){
+      var now = new Date();
+      var dname = now.getDay(),
+          mo = now.getMonth(),
+          dnum = now.getDate(),
+          yr = now.getFullYear(),
+          hou = now.getHours(),
+          min = now.getMinutes(),
+          sec = now.getSeconds(),
+          pe = "AM";
+		  
+          if(hou >= 12){
+            pe = "PM";
+          }
+          if(hou == 0){
+            hou = 12;
+          }
+          if(hou > 12){
+            hou = hou - 12;
+          }
+
+          Number.prototype.pad = function(digits){
+            for(var n = this.toString(); n.length < digits; n = 0 + n);
+            return n;
+          }
+
+          var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+          var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+          var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+          for(var i = 0; i < ids.length; i++)
+          document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+    }
+
+    function initClock(){
+      updateClock();
+      window.setInterval("updateClock()", 1);
+    }
+
+
+</script>
+
+
+</body>
+</html>
